@@ -1,0 +1,26 @@
+{% extends 'template.html' %} {% load static %} {% block head %}
+<title>Blog - Main</title>
+<link rel="stylesheet" href="{% static 'css/create_post.css' %}" />
+{% endblock %}
+
+
+{% block content_top %}
+<form action="" method="POST">
+{% csrf_token %}
+<div class="main_content_top">
+  <div class="main_content_top_title">익명 게시글 작성</div>
+  <div class="main_content_top_input">
+    <input type="text" name="nickname" placeholder="닉네임을 입력해주세요" required >
+    <input type="text" name="title" placeholder="제목을 입력해주세요" required >
+  </div>
+</div>
+{% endblock %}
+
+{% block content_bottom %}
+<textarea placeholder="내용을 입력해주세요" name="content" required ></textarea>
+<div class="main_content_bottom_input">
+  <input type="password" name="password" placeholder="패스워드를 입력해주세요" required >
+  <input type="submit" value="글쓰기">
+</div>
+</form>
+{% endblock %}

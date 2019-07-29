@@ -1,0 +1,28 @@
+{% extends 'template.html' %} {% load static %} {% block head %}
+<title>Blog - Main</title>
+<link rel="stylesheet" href="{% static 'css/view_post.css' %}" />
+{% endblock %}
+
+
+{% block content_top %}
+{% csrf_token %}
+<div class="main_content_top">
+  <div class="main_content_top">
+    <div>{{ post.nickname }}</div>
+    <div>{{ post.title }}</div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content_bottom %}
+<div class="main_content_bottom">
+  {{ post.content }}
+</div>
+<form action="{% url 'delete_post' post.id %}" method="POST">
+  {% csrf_token %}
+  <div class="main_content_bottom_input">
+    <input type="password" name="password" placeholder="패스워드를 입력해주세요" required >
+    <input type="submit" value="삭제하기">
+  </div>
+</form>
+{% endblock %}

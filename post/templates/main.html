@@ -1,0 +1,31 @@
+{% extends 'template.html' %} {% load static %} {% block head %}
+<title>Blog - Main</title>
+<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+{% endblock %}
+
+{% block content_top %}
+<div class="main_content_top">
+  <div class="main_content_top_title">
+    <div>누구든지 포스팅 할 수 있는</div>
+    <div>익명 블로그</div>    
+  </div>
+  <a href="{% url 'create_post' %}">게시글 쓰기</a>
+</div>
+{% endblock %}
+
+{% block content_bottom %}
+{% if post_list %}
+  {% for post in post_list %}
+    <div class="post_item">
+      <div class="post_item_top">
+        <div>{{ post.nickname }}</div>
+        <div>{{ post.createdAt | date:'M d, Y' }}</div>
+      </div>
+      <div class="post_item_title">Title</div>
+      <a href="{% url 'view_post' post.id %}"></a>
+    </div>
+  {% endfor %}
+{% else %}
+  <div class="no_post">작성된 포스트가 없습니다.</div>
+{% endif %}
+{% endblock %}
