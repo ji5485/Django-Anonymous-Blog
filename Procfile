@@ -1,0 +1,1 @@
+web: gunicorn likelion_blog:app --log-file -
