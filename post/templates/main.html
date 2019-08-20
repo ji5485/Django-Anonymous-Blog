@@ -21,7 +21,7 @@
         <div>{{ post.nickname }}</div>
         <div>{{ post.createdAt | date:'M d, Y' }}</div>
       </div>
-      <div class="post_item_title">Title</div>
+      <div class="post_item_title">{{ post.title }}</div>
       <a href="{% url 'view_post' post.id %}"></a>
     </div>
   {% endfor %}
